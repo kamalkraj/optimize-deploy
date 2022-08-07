@@ -130,3 +130,5 @@ dmypy.json
 
 triton_models/
 nebullvm_optimized/
+examples/cifar10/data/
+examples/cifar10/cifar_net.pth
