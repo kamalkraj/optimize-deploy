@@ -16,3 +16,4 @@ repos:
     hooks:
     -   id: flake8
         name: flake8 (python)
+        args: ["--ignore=E501"]
