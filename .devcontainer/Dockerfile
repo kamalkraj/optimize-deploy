@@ -20,6 +20,7 @@ ENV PATH="/home/$USERNAME/.local/bin:${PATH}"
 ENV NO_COMPILER_INSTALLATION=1
 
 RUN pip3 install -U pip && pip install nebullvm==0.4.0
+RUN python -c "import nebullvm"
 RUN pip3 uninstall onnxruntime && pip3 install onnxruntime-gpu
 
 CMD ["/bin/bash"]
