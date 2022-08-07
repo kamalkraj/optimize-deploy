@@ -46,7 +46,6 @@ class BaseModel(ABC):
         args["dynamic_info"] = self.get_dynamic_info()
         return args
 
-    @abstractmethod
     def save_auxiliary_data(self, path: str):
         """
         Save auxiliary data to the path.
