@@ -1,9 +1,11 @@
+import os
+
 import torch
 from torchvision import transforms
 
 
 class Pipeline:
-    def __init__(self) -> None:
+    def __init__(self, path) -> None:
         super().__init__()
         self.transformer = transforms.Compose(
             [
@@ -15,7 +17,7 @@ class Pipeline:
                 ),
             ]
         )
-        with open("labels.txt", "r") as f:
+        with open(os.path.join(path, "labels.txt"), "r") as f:
             self.categories = [s.strip() for s in f.readlines()]
 
     def preprocess(self, image: torch.Tensor, device: str) -> torch.Tensor:
