@@ -1,3 +1,6 @@
+import os
+import urllib
+
 import torch
 
 from base import BaseModel
@@ -13,6 +16,7 @@ class Model(BaseModel):
             "pytorch/vision:v0.10.0", "resnet50", pretrained=True
         )
         self.model.eval()
+        self.auxiliary_data = True
 
     def get_model(self):
         return self.model
@@ -26,3 +30,10 @@ class Model(BaseModel):
             "outputs": [{0: "batch"}],
         }
         return dynamic_info
+
+    def save_auxiliary_data(self, path: str):
+        filename = os.path.join(path, "labels.txt")
+        urllib.request.urlretrieve(
+            "https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt",  # noqa E501
+            filename,
+        )
